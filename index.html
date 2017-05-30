@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Crystal Collector</title>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous">
+	</script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+<body>
+	<div class="container">
+		<div class='row'>
+			<div class='col.md.12 text-center'>
+			<h1>CRYSTAL COLLECTOR</h1>
+			</div>
+		</div>
+		<div class='row'>
+			<div class='col.md.12 text-center'>
+			
+		</div>
+		<div class='row'>
+			<div class='col.md.12 text-center'>
+			<p>Target #:
+			<span class="rando"></span>
+			</p>
+			</div>
+		</div>
+		<div class='row'>
+			<div class='col.md.12 text-center'>
+			<p>Your number:
+			<span class="yournumber"></span>
+			</p>
+			</div>
+		</div>
+		<div class='row'>
+			<div class='col.md.12 text-center'>
+			<p>Wins:
+			<span class="wins"></span>
+			</p>
+			<p>Losses:
+			<span class="losses"></span>
+			</p>
+			</div>
+		</div>
+		<div class='row'>
+			<div class='col.md.12 text-center'>
+			<img src="https://media.giphy.com/media/l3nWbJz3H2I0dOges/giphy.gif" id="crystal1" class="crystal"/>
+			<img src="https://media.giphy.com/media/UfqbomjkuLlVS/giphy.gif"  id="crystal2" class="crystal"/>
+			<img src="https://media.giphy.com/media/pFVFRvkn8nPMI/giphy.gif"  id="crystal3" class="crystal"/>
+			<img src="https://media.giphy.com/media/TMR7oVThWR8Eo/giphy.gif"  id="crystal4" class="crystal"/>
+			</div>
+		</div>
+	</div>
+
+<script>
+$(document).ready(function () {
+	var wins = 0;
+	var losses = 0;
+	var counter = 0;
+	var rando = [Math.floor(Math.random() * 120) + 19];
+	var crystalValue = [Math.floor(Math.random() * 12) + 2, Math.floor(Math.random() * 12) + 2, Math.floor(Math.random() * 12) + 2, Math.floor(Math.random() * 12) + 2];
+	$('.rando').text(rando[0]);
+	$('.yournumber').text(counter);
+	$('.losses').text(losses);
+	$('.wins').text(wins);
+	
+	for (var i = 0; i < crystalValue.length; i++) {
+		$("#crystal1").attr("crystal-data", crystalValue[0]);
+		$("#crystal2").attr("crystal-data", crystalValue[1]);
+		$("#crystal3").attr("crystal-data", crystalValue[2]);
+		$("#crystal4").attr("crystal-data", crystalValue[3]);
+	}
+	$(".crystal").on("click", function() {
+		var crystalPoints = ($(this).attr("crystal-data"));
+		console.log(crystalPoints);
+		crystalPoints = parseInt(crystalPoints);
+		counter += crystalPoints;
+
+		if (counter === rando) {
+			wins++;
+			alert("Ermagerd you won!!!!!!!!!!!!!");
+		}
+		else if (counter >= rando) {
+			losses++;
+			alert("You lose hahahahahaha");
+
+
+		}
+	})
+
+});
+</script>
+</body>
+</html>
